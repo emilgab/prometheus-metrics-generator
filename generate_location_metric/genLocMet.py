@@ -2,7 +2,13 @@
 # This contains the genLocMet() object that will be able to
 # generate the metrics for each city.
 
+# * imports *
+import datetime
+
 class genLocMet():
+
+    # stores the time that we will use to check opening hours (24hrs)
+    the_time = int("{0:%H}".format(datetime.datetime.now()))
 
     def __init__(self):
         # city populations
@@ -18,6 +24,7 @@ class genLocMet():
         # of how many horse owners there are in each city.
         self.cit_per_horse = 36
         self.horses_per_city = {cit: round(pop/self.cit_per_horse) for cit,pop in self.city_pop.items()}
+        self.open_hrs = [x for x in range(7,21)]
 
     def __repr__(self):
         return "{}".format(self.horses_per_city)

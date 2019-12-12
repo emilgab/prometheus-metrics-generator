@@ -19,5 +19,5 @@ print(x)
 prom_type_line = "# TYPE store_sales gauge"
 prom_help_line = "# HELP store_sales Sales from all of the stores"
 
-while open("metrics","w+") as f:
-    pass
+with open("metrics","w+") as f:
+    f.write("{}\n{}".format(prom_type_line,prom_help_line))
