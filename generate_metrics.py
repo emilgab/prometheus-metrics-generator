@@ -11,3 +11,13 @@
 
 # * imports *
 from generate_location_metric.genLocMet import genLocMet
+import os
+
+x = genLocMet()
+print(x)
+
+prom_type_line = "# TYPE store_sales gauge"
+prom_help_line = "# HELP store_sales Sales from all of the stores"
+
+while open("metrics","w+") as f:
+    pass
