@@ -42,7 +42,7 @@ class genLocMet():
             visitors = math.ceil((horses*self.perc_of_visitors)/720)
             sales = 0
             for num in range(0,visitors+1):
-                odds = random.randint(0,3)
+                odds = random.randint(0,4)
                 if odds == 1:
                     sales += 1
             if extra_purchases == winning_number:
