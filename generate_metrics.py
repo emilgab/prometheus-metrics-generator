@@ -20,9 +20,9 @@ prom_help_line = "# HELP store_sales Sales from all of the stores"
 
 with open("metrics","w+") as f:
     f.write("{}\n{}\n".format(prom_type_line,prom_help_line))
-    f.write('stores_sales{%s} %s\n' % ('name="oslo"',x.calcPurchase('oslo_norway')))
-    f.write('stores_sales{%s} %s\n' % ('name="bergen"',x.calcPurchase('bergen_norway')))
-    f.write('stores_sales{%s} %s\n' % ('name="stavanger"',x.calcPurchase('stavanger_norway')))
-    f.write('stores_sales{%s} %s\n' % ('name="fredrikstad"',x.calcPurchase('fredrikstad_norway')))
-    f.write('stores_sales{%s} %s\n' % ('name="sandefjord"',x.calcPurchase('sandefjord_norway')))
-    f.write('stores_sales{%s} %s\n' % ('name="tromso"',x.calcPurchase('tromso_norway')))
+    f.write('store_oslo{%s} %s\n' % ('name="oslo"',x.calcPurchase('oslo_norway')))
+    f.write('store_bergen{%s} %s\n' % ('name="bergen"',x.calcPurchase('bergen_norway')))
+    f.write('store_stavanger{%s} %s\n' % ('name="stavanger"',x.calcPurchase('stavanger_norway')))
+    f.write('store_fredrikstad{%s} %s\n' % ('name="fredrikstad"',x.calcPurchase('fredrikstad_norway')))
+    f.write('store_sandefjord{%s} %s\n' % ('name="sandefjord"',x.calcPurchase('sandefjord_norway')))
+    f.write('store_tromso{%s} %s\n' % ('name="tromso"',x.calcPurchase('tromso_norway')))
