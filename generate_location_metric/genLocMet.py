@@ -4,11 +4,14 @@
 
 # * imports *
 import datetime
+import random
+import math
 
 class genLocMet():
 
     # stores the time that we will use to check opening hours (24hrs)
     the_time = int("{0:%H}".format(datetime.datetime.now()))
+    perc_of_visitors = 0.03 # as decimal "percentage"
 
     def __init__(self):
         # city populations
@@ -24,7 +27,21 @@ class genLocMet():
         # of how many horse owners there are in each city.
         self.cit_per_horse = 36
         self.horses_per_city = {cit: round(pop/self.cit_per_horse) for cit,pop in self.city_pop.items()}
-        self.open_hrs = [x for x in range(7,21)]
+        self.open_hrs = [x for x in range(7,20)]
 
     def __repr__(self):
-        return "{}".format(self.horses_per_city)
+        return "City Population dict: {}\n\nOpening hrs: {}".format(self.horses_per_city,self.open_hrs)
+
+    def calcPurchase(self, city):
+        extra_purchases = random.randint(0,9)
+        winning_number = random.randint(0,9)
+        horses = self.horses_per_city[city]
+        visitors = math.ceil((horses*self.perc_of_visitors)/720)
+        sales = 0
+        for num in range(0,visitors+1):
+            odds = random.randint(0,9)
+            if str(odds) in '0123456':
+                sales += 1
+        if extra_purchases == winning_number:
+            sales += random.randint(1,3)
+        return sales
