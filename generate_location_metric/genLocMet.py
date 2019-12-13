@@ -33,15 +33,18 @@ class genLocMet():
         return "City Population dict: {}\n\nOpening hrs: {}".format(self.horses_per_city,self.open_hrs)
 
     def calcPurchase(self, city):
-        extra_purchases = random.randint(0,9)
-        winning_number = random.randint(0,9)
-        horses = self.horses_per_city[city]
-        visitors = math.ceil((horses*self.perc_of_visitors)/720)
-        sales = 0
-        for num in range(0,visitors+1):
-            odds = random.randint(0,9)
-            if str(odds) in '0123456':
-                sales += 1
-        if extra_purchases == winning_number:
-            sales += random.randint(1,3)
-        return sales
+        if self.the_time not in self.open_hrs:
+            return 0
+        else:
+            extra_purchases = random.randint(0,9)
+            winning_number = random.randint(0,9)
+            horses = self.horses_per_city[city]
+            visitors = math.ceil((horses*self.perc_of_visitors)/720)
+            sales = 0
+            for num in range(0,visitors+1):
+                odds = random.randint(0,9)
+                if str(odds) in '0123456':
+                    sales += 1
+            if extra_purchases == winning_number:
+                sales += random.randint(1,3)
+            return sales
