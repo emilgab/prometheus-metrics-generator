@@ -11,15 +11,19 @@
 
 # * imports *
 from generate_location_metric.genLocMet import genLocMet
-import os
 
 x = genLocMet()
 
+# prometheus info which is to be included in the top of the metrics file
 prom_type_line = "# TYPE store_sales gauge"
 prom_help_line = "# HELP store_sales Sales from all of the stores"
 
 with open("metrics","w+") as f:
+    # writes the prometheus info
     f.write("{}\n{}\n".format(prom_type_line,prom_help_line))
+    # writes the syntax for a metric in prometheus and accesses the calcPurchase() method from our object
+    # Output example of one line:
+    # store_oslo{name="oslo"} 3
     f.write('store_oslo{%s} %s\n' % ('name="oslo"',x.calcPurchase('oslo_norway')))
     f.write('store_bergen{%s} %s\n' % ('name="bergen"',x.calcPurchase('bergen_norway')))
     f.write('store_stavanger{%s} %s\n' % ('name="stavanger"',x.calcPurchase('stavanger_norway')))
